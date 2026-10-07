@@ -352,6 +352,70 @@
             background: #e85f00;
         }
 
+        .how-it-works {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 76px 0 24px;
+        }
+
+        .how-it-works h2 {
+            margin: 0 0 48px;
+            color: var(--primary);
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            letter-spacing: -0.03em;
+            text-align: center;
+        }
+
+        .steps-grid {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .steps-grid::before {
+            position: absolute;
+            top: 31px;
+            right: 12.5%;
+            left: 12.5%;
+            border-top: 3px dotted #1877f2;
+            content: "";
+        }
+
+        .step-card {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            border: 2px solid #1877f2;
+            border-radius: 50%;
+            background: var(--bg);
+            color: #1877f2;
+            font-size: 1.15rem;
+            font-weight: 800;
+        }
+
+        .step-card h3 {
+            margin: 0 0 10px;
+            color: var(--primary);
+            font-size: 1.08rem;
+        }
+
+        .step-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.94rem;
+            line-height: 1.6;
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-12px); }
@@ -408,6 +472,33 @@
             .services-grid {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
             }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding-left: 0;
+            }
+
+            .steps-grid::before {
+                top: 31px;
+                right: auto;
+                bottom: 31px;
+                left: 31px;
+                border-top: 0;
+                border-left: 3px dotted #1877f2;
+            }
+
+            .step-card {
+                display: flex;
+                align-items: flex-start;
+                gap: 18px;
+                text-align: left;
+            }
+
+            .step-number {
+                flex: 0 0 64px;
+                margin: 0;
+            }
         }
 
         @media (max-width: 560px) {
@@ -424,6 +515,10 @@
                 min-height: 230px;
                 padding: 20px 16px;
             }
+
+            .how-it-works {
+                padding-top: 56px;
+            }
         }
     </style>
 </head>
@@ -436,7 +531,7 @@
         <nav class="menu" aria-label="Menu principal">
             <a href="#">Início</a>
             <a href="#servicos">Serviços</a>
-            <a href="#">Como funciona</a>
+            <a href="#como-funciona">Como funciona</a>
             <a href="#">Avaliações</a>
             <a href="#">FAQ</a>
         </nav>
@@ -515,6 +610,43 @@
                     <h3>Facebook</h3>
                     <p>Seguidores e curtidas</p>
                     <a class="button" href="#">Ver planos →</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="how-it-works" id="como-funciona" aria-labelledby="how-it-works-title">
+            <h2 id="how-it-works-title">Como funciona</h2>
+            <div class="steps-grid">
+                <article class="step-card">
+                    <span class="step-number">01</span>
+                    <div>
+                        <h3>Escolha o serviço</h3>
+                        <p>Selecione a rede social e o pacote desejado.</p>
+                    </div>
+                </article>
+
+                <article class="step-card">
+                    <span class="step-number">02</span>
+                    <div>
+                        <h3>Informe o perfil</h3>
+                        <p>Insira o endereço do perfil ou o link do vídeo.</p>
+                    </div>
+                </article>
+
+                <article class="step-card">
+                    <span class="step-number">03</span>
+                    <div>
+                        <h3>Realize o pagamento</h3>
+                        <p>Escolha uma das formas de pagamento disponíveis.</p>
+                    </div>
+                </article>
+
+                <article class="step-card">
+                    <span class="step-number">04</span>
+                    <div>
+                        <h3>Acompanhe o pedido</h3>
+                        <p>O pedido será processado em até 30 minutos. Você será notificado aqui pelo site assim que o processo for finalizado.</p>
+                    </div>
                 </article>
             </div>
         </section>
