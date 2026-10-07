@@ -219,33 +219,7 @@
             width: 150px;
             height: 150px;
             border-radius: 32px;
-            background: linear-gradient(135deg, #101827, #1c2940);
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.2rem;
-            font-weight: 800;
-            letter-spacing: -0.08em;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-        }
-
-        .paper-plane {
-            position: absolute;
-            right: 6px;
-            bottom: 54px;
-            width: 82px;
-            height: 82px;
-            background: #ff8d2a;
-            color: var(--white);
-            border-radius: 18px 18px 18px 42px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.3rem;
-            transform: rotate(22deg);
-            box-shadow: 0 12px 24px rgba(255, 141, 42, 0.35);
-            animation: fly 4s ease-in-out infinite;
+            object-fit: contain;
         }
 
         .social {
@@ -290,11 +264,6 @@
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-12px); }
-        }
-
-        @keyframes fly {
-            0%, 100% { transform: rotate(22deg) translateY(0); }
-            50% { transform: rotate(18deg) translateY(-10px); }
         }
 
         @keyframes rise {
@@ -394,8 +363,7 @@
                 <div class="stat stat-3">+100K</div>
 
                 <div class="af-card">
-                    <div class="af-mark">AF</div>
-                    <div class="paper-plane">✈</div>
+                    <img class="af-mark" src="Imagens/Ícone_SF.png" alt="Ícone AF">
                 </div>
             </div>
         </section>
