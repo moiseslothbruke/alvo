@@ -92,11 +92,220 @@
 
         main {
             min-height: 70vh;
+            padding: 42px 6vw 80px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.08fr 0.92fr;
+            align-items: center;
+            gap: 42px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .hero-copy {
+            max-width: 620px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: rgba(255, 107, 0, 0.08);
+            color: var(--accent);
+            padding: 8px 14px;
+            border-radius: 999px;
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .hero-copy h1 {
+            margin: 0;
+            font-size: clamp(2.4rem, 4vw, 4.5rem);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            color: var(--primary);
+        }
+
+        .lead {
+            margin: 16px 0 12px;
+            font-size: clamp(1.05rem, 1.7vw, 1.7rem);
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .subtitle {
+            margin: 0;
+            font-size: 1.02rem;
+            line-height: 1.7;
+            color: var(--muted);
+            max-width: 540px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 30px;
+        }
+
+        .hero-actions .button {
+            padding: 16px 26px;
+            font-size: 0.97rem;
+        }
+
+        .button-primary {
+            background: linear-gradient(135deg, #ff8d2a, var(--accent));
+        }
+
+        .button-secondary {
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        .hero-visual {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .visual-blob {
+            position: absolute;
+            inset: 30px 20px 30px 30px;
+            border-radius: 34px;
+            background: linear-gradient(135deg, rgba(255, 122, 39, 0.08), rgba(15, 23, 42, 0.04));
+            border: 1px solid rgba(255, 122, 39, 0.12);
+            box-shadow: 0 28px 80px rgba(15, 23, 42, 0.08);
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .dotted-line {
+            position: absolute;
+            width: 300px;
+            height: 200px;
+            border: 2px dashed rgba(255, 107, 0, 0.5);
+            border-color: rgba(255, 107, 0, 0.45);
+            border-left: none;
+            border-bottom: none;
+            border-radius: 160px 160px 0 0;
+            right: 80px;
+            top: 100px;
+            transform: rotate(-18deg);
+        }
+
+        .af-card {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            border-radius: 32px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(245, 247, 252, 0.92));
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+            border: 1px solid rgba(15, 23, 42, 0.04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .af-mark {
+            width: 150px;
+            height: 150px;
+            border-radius: 32px;
+            background: linear-gradient(135deg, #101827, #1c2940);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.08em;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+        }
+
+        .paper-plane {
+            position: absolute;
+            right: 6px;
+            bottom: 54px;
+            width: 82px;
+            height: 82px;
+            background: #ff8d2a;
+            color: var(--white);
+            border-radius: 18px 18px 18px 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.3rem;
+            transform: rotate(22deg);
+            box-shadow: 0 12px 24px rgba(255, 141, 42, 0.35);
+            animation: fly 4s ease-in-out infinite;
+        }
+
+        .social {
+            position: absolute;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+            z-index: 3;
+        }
+
+        .social-1 { left: 10px; top: 110px; }
+        .social-2 { right: 64px; top: 50px; }
+        .social-3 { right: 14px; bottom: 112px; }
+        .social-4 { left: 56px; bottom: 82px; }
+
+        .stat {
+            position: absolute;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--primary);
+            background: rgba(255, 255, 255, 0.84);
+            padding: 10px 14px;
+            border-radius: 999px;
+            box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+            z-index: 4;
+            animation: rise 4s ease-in-out infinite;
+        }
+
+        .stat-1 { left: 12px; bottom: 28px; }
+        .stat-2 { right: 110px; bottom: 22px; }
+        .stat-3 { right: 40px; top: 118px; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes fly {
+            0%, 100% { transform: rotate(22deg) translateY(0); }
+            50% { transform: rotate(18deg) translateY(-10px); }
+        }
+
+        @keyframes rise {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
         }
 
         @media (max-width: 780px) {
             header {
-                flex-wrap: wrap;                justify-content: center;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .logo-wrap,
@@ -108,6 +317,32 @@
             .menu {
                 width: 100%;
                 gap: 16px 22px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-copy {
+                max-width: 100%;
+            }
+
+            .subtitle {
+                margin: 0 auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                min-height: 420px;
+            }
+
+            .af-card {
+                width: 240px;
+                height: 240px;
             }
         }
     </style>
@@ -132,7 +367,38 @@
     </header>
 
     <main>
+        <section class="hero" aria-labelledby="comece-agora-title">
+            <div class="hero-copy">
+                <span class="eyebrow">Comece agora</span>
+                <h1 id="comece-agora-title">Impulsione suas redes sociais.</h1>
+                <p class="lead">Mais presença. Mais alcance. Mais impacto.</p>
+                <p class="subtitle">Encontre planos para aumentar sua presença nas principais redes sociais de forma simples e rápida.</p>
 
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#">🚀 Ver serviços</a>
+                    <a class="button button-secondary" href="#">Começar agora</a>
+                </div>
+            </div>
+
+            <div class="hero-visual" aria-label="Ilustração de crescimento nas redes sociais">
+                <div class="visual-blob"></div>
+                <div class="dotted-line"></div>
+
+                <div class="social social-1">IG</div>
+                <div class="social social-2">YT</div>
+                <div class="social social-3">TT</div>
+                <div class="social social-4">FB</div>
+
+                <div class="stat stat-1">+10K</div>
+                <div class="stat stat-2">+50K</div>
+                <div class="stat stat-3">+100K</div>
+
+                <div class="af-card">
+                    <div class="af-mark">AF</div>
+                    <div class="paper-plane">✈</div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
