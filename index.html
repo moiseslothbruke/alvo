@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seja Bem-vindo</title>
+    <style>
+        :root {
+            --bg: #f6f7fb;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --primary: #0f172a;
+            --accent: #ff6b00;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 18px 6vw;
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            min-width: 180px;
+        }
+
+        #logo {
+            display: block;
+            max-width: 180px;
+            height: auto;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex: 1;
+            flex-wrap: wrap;
+        }
+
+        .menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.96rem;
+            transition: color 0.2s ease;
+        }
+
+        .menu a:hover {
+            color: var(--accent);
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            min-width: 180px;
+        }
+
+        .button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.25);
+        }
+
+        main {
+            min-height: 70vh;
+        }
+
+        @media (max-width: 780px) {
+            header {
+                flex-wrap: wrap;                justify-content: center;
+            }
+
+            .logo-wrap,
+            .actions {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .menu {
+                width: 100%;
+                gap: 16px 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-wrap">
+            <img id="logo" src="Imagens/Logo_site.png" alt="Logo do site">
+        </div>
+
+        <nav class="menu" aria-label="Menu principal">
+            <a href="#">Início</a>
+            <a href="#">Serviços</a>
+            <a href="#">Como funciona</a>
+            <a href="#">Avaliações</a>
+            <a href="#">FAQ</a>
+        </nav>
+
+        <div class="actions">
+            <a class="button" href="#">Fale conosco</a>
+        </div>
+    </header>
+
+    <main>
+
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+</html>
