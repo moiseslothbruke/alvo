@@ -530,6 +530,62 @@
             white-space: nowrap;
         }
 
+        .site-footer {
+            margin-top: 76px;
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 56px 6vw 64px;
+        }
+
+        .footer-brand h2,
+        .footer-column h3 {
+            margin: 0 0 16px;
+            color: var(--white);
+        }
+
+        .footer-brand h2 {
+            font-size: 1.35rem;
+            letter-spacing: 0.04em;
+        }
+
+        .footer-brand p {
+            max-width: 320px;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.6;
+        }
+
+        .footer-column h3 {
+            font-size: 1rem;
+        }
+
+        .footer-column ul {
+            display: grid;
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.72);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-column a:hover,
+        .footer-column a:focus-visible {
+            color: var(--white);
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-12px); }
@@ -601,6 +657,15 @@
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 36px;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+
             .steps-grid::before {
                 top: 31px;
                 right: auto;
@@ -656,6 +721,20 @@
 
             .benefit-card {
                 padding: 20px 16px;
+            }
+
+            .site-footer {
+                margin-top: 56px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                padding: 44px 6vw;
+            }
+
+            .footer-brand {
+                grid-column: auto;
             }
         }
     </style>
@@ -872,8 +951,32 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>ALVO FAN</h2>
+                <p>Soluções para crescimento e presença digital.</p>
+            </div>
 
+            <nav class="footer-column" aria-label="Empresa">
+                <h3>Empresa</h3>
+                <ul>
+                    <li><a href="#diferenciais">Sobre nós</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Suporte</a></li>
+                </ul>
+            </nav>
+
+            <nav class="footer-column" aria-label="Serviços">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="#servicos">Instagram</a></li>
+                    <li><a href="#servicos">TikTok</a></li>
+                    <li><a href="#servicos">YouTube</a></li>
+                    <li><a href="#servicos">Facebook</a></li>
+                </ul>
+            </nav>
+        </div>
     </footer>
 </body>
 </html>
