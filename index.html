@@ -261,6 +261,97 @@
         .stat-2 { right: 110px; bottom: 22px; }
         .stat-3 { right: 40px; top: 118px; }
 
+        .services {
+            max-width: 1280px;
+            margin: 36px auto 0;
+            padding: 56px 0 12px;
+        }
+
+        .services h2 {
+            margin: 0 0 32px;
+            color: var(--primary);
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            letter-spacing: -0.03em;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-height: 240px;
+            padding: 24px 20px;
+            background: var(--white);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
+        }
+
+        .platform-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--accent);
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .platform-icon-tiktok {
+            background: #111827;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .platform-icon-youtube {
+            background: #fff0ed;
+            color: #ff0033;
+        }
+
+        .platform-icon-kwai {
+            background: #fff2e8;
+            color: #f06b18;
+        }
+
+        .platform-icon-facebook {
+            background: #eaf2ff;
+            color: #1877f2;
+            font-size: 1.6rem;
+        }
+
+        .service-card h3 {
+            margin: 0 0 8px;
+            color: var(--primary);
+            font-size: 1.15rem;
+        }
+
+        .service-card p {
+            margin: 0 0 22px;
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        .service-card .button {
+            margin-top: auto;
+            padding: 11px 16px;
+        }
+
+        .service-card .button:hover,
+        .service-card .button:focus-visible {
+            background: #e85f00;
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-12px); }
@@ -313,6 +404,26 @@
                 width: 240px;
                 height: 240px;
             }
+
+            .services-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .services {
+                padding-top: 36px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .service-card {
+                min-height: 230px;
+                padding: 20px 16px;
+            }
         }
     </style>
 </head>
@@ -324,7 +435,7 @@
 
         <nav class="menu" aria-label="Menu principal">
             <a href="#">Início</a>
-            <a href="#">Serviços</a>
+            <a href="#servicos">Serviços</a>
             <a href="#">Como funciona</a>
             <a href="#">Avaliações</a>
             <a href="#">FAQ</a>
@@ -344,7 +455,7 @@
                 <p class="subtitle">Encontre planos para aumentar sua presença nas principais redes sociais de forma simples e rápida.</p>
 
                 <div class="hero-actions">
-                    <a class="button button-primary" href="#">🚀 Ver serviços</a>
+                    <a class="button button-primary" href="#servicos">🚀 Ver serviços</a>
                     <a class="button button-secondary" href="#">Começar agora</a>
                 </div>
             </div>
@@ -365,6 +476,46 @@
                 <div class="af-card">
                     <img class="af-mark" src="Imagens/Ícone_SF.png" alt="Ícone AF">
                 </div>
+            </div>
+        </section>
+
+        <section class="services" id="servicos" aria-labelledby="services-title">
+            <h2 id="services-title">Escolha onde você quer crescer</h2>
+            <div class="services-grid">
+                <article class="service-card">
+                    <span class="platform-icon" aria-hidden="true">IG</span>
+                    <h3>Instagram</h3>
+                    <p>Seguidores, curtidas e visualizações</p>
+                    <a class="button" href="#">Ver planos →</a>
+                </article>
+
+                <article class="service-card">
+                    <span class="platform-icon platform-icon-tiktok" aria-hidden="true">♪</span>
+                    <h3>TikTok</h3>
+                    <p>Seguidores, curtidas e visualizações</p>
+                    <a class="button" href="#">Ver planos →</a>
+                </article>
+
+                <article class="service-card">
+                    <span class="platform-icon platform-icon-youtube" aria-hidden="true">▶</span>
+                    <h3>YouTube</h3>
+                    <p>Inscritos e visualizações</p>
+                    <a class="button" href="#">Ver planos →</a>
+                </article>
+
+                <article class="service-card">
+                    <span class="platform-icon platform-icon-kwai" aria-hidden="true">K</span>
+                    <h3>Kwai</h3>
+                    <p>Seguidores e visualizações</p>
+                    <a class="button" href="#">Ver planos →</a>
+                </article>
+
+                <article class="service-card">
+                    <span class="platform-icon platform-icon-facebook" aria-hidden="true">f</span>
+                    <h3>Facebook</h3>
+                    <p>Seguidores e curtidas</p>
+                    <a class="button" href="#">Ver planos →</a>
+                </article>
             </div>
         </section>
     </main>
