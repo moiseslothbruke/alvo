@@ -416,6 +416,120 @@
             line-height: 1.6;
         }
 
+        .benefits {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 76px 0 24px;
+        }
+
+        .benefits h2 {
+            margin: 0 0 32px;
+            color: var(--primary);
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            letter-spacing: -0.03em;
+            text-align: center;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .benefit-card {
+            min-height: 190px;
+            padding: 24px 20px;
+            background: var(--white);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
+        }
+
+        .benefit-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 18px;
+            border-radius: 15px;
+            background: rgba(24, 119, 242, 0.1);
+            font-size: 1.4rem;
+        }
+
+        .benefit-card h3 {
+            margin: 0 0 8px;
+            color: var(--primary);
+            font-size: 1.08rem;
+        }
+
+        .benefit-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.94rem;
+            line-height: 1.6;
+        }
+
+        .testimonials {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 76px 0 24px;
+        }
+
+        .testimonials h2 {
+            margin: 0 0 32px;
+            color: var(--primary);
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            letter-spacing: -0.03em;
+            text-align: center;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .testimonial-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 210px;
+            padding: 24px 20px;
+            background: var(--white);
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 20px;
+            box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
+        }
+
+        .testimonial-card blockquote {
+            margin: 0 0 24px;
+            color: var(--text);
+            font-size: 0.98rem;
+            line-height: 1.65;
+        }
+
+        .testimonial-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: auto;
+        }
+
+        .testimonial-author {
+            color: var(--primary);
+            font-size: 0.94rem;
+            font-style: italic;
+            font-weight: 700;
+        }
+
+        .testimonial-rating {
+            color: #f5a623;
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            white-space: nowrap;
+        }
+
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-12px); }
@@ -479,6 +593,14 @@
                 padding-left: 0;
             }
 
+            .benefits-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .steps-grid::before {
                 top: 31px;
                 right: auto;
@@ -519,6 +641,22 @@
             .how-it-works {
                 padding-top: 56px;
             }
+
+            .benefits {
+                padding-top: 56px;
+            }
+
+            .testimonials {
+                padding-top: 56px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit-card {
+                padding: 20px 16px;
+            }
         }
     </style>
 </head>
@@ -532,7 +670,7 @@
             <a href="#">Início</a>
             <a href="#servicos">Serviços</a>
             <a href="#como-funciona">Como funciona</a>
-            <a href="#">Avaliações</a>
+            <a href="#depoimentos">Avaliações</a>
             <a href="#">FAQ</a>
         </nav>
 
@@ -646,6 +784,88 @@
                     <div>
                         <h3>Acompanhe o pedido</h3>
                         <p>O pedido será processado em até 30 minutos. Você será notificado aqui pelo site assim que o processo for finalizado.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="benefits" id="diferenciais" aria-labelledby="benefits-title">
+            <h2 id="benefits-title">Por que escolher a ALVO FAN?</h2>
+            <div class="benefits-grid">
+                <article class="benefit-card">
+                    <span class="benefit-icon" aria-hidden="true">⚡</span>
+                    <h3>Processamento rápido</h3>
+                    <p>Pedidos processados de forma ágil.</p>
+                </article>
+
+                <article class="benefit-card">
+                    <span class="benefit-icon" aria-hidden="true">🔒</span>
+                    <h3>Pagamento seguro</h3>
+                    <p>Transações protegidas.</p>
+                </article>
+
+                <article class="benefit-card">
+                    <span class="benefit-icon" aria-hidden="true">📊</span>
+                    <h3>Acompanhamento</h3>
+                    <p>Acompanhe seus pedidos pelo painel.</p>
+                </article>
+
+                <article class="benefit-card">
+                    <span class="benefit-icon" aria-hidden="true">💬</span>
+                    <h3>Suporte</h3>
+                    <p>Atendimento para ajudar quando precisar.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="testimonials" id="depoimentos" aria-labelledby="testimonials-title">
+            <h2 id="testimonials-title">⭐ Depoimentos</h2>
+            <div class="testimonials-grid">
+                <article class="testimonial-card">
+                    <blockquote>“Gostei bastante do resultado! O pedido foi processado rapidamente e a entrega aconteceu conforme o esperado.”</blockquote>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-author">— Lucas M.</span>
+                        <span class="testimonial-rating" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
+                    </div>
+                </article>
+
+                <article class="testimonial-card">
+                    <blockquote>“Achei o processo bem simples. Fiz o pedido, paguei e recebi as atualizações sem complicação.”</blockquote>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-author">— Ana Beatriz</span>
+                        <span class="testimonial-rating" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
+                    </div>
+                </article>
+
+                <article class="testimonial-card">
+                    <blockquote>“Atendimento rápido e site fácil de usar. Com certeza voltaria a comprar.”</blockquote>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-author">— Gabriel S.</span>
+                        <span class="testimonial-rating" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
+                    </div>
+                </article>
+
+                <article class="testimonial-card">
+                    <blockquote>“O pedido chegou rápido e o processo foi muito tranquilo. Recomendo para quem procura praticidade.”</blockquote>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-author">— Marcos R.</span>
+                        <span class="testimonial-rating" role="img" aria-label="4 de 5 estrelas">★★★★</span>
+                    </div>
+                </article>
+
+                <article class="testimonial-card">
+                    <blockquote>“Gostei principalmente da facilidade para fazer o pedido. Tudo bem organizado e sem burocracia.”</blockquote>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-author">— Julia M.</span>
+                        <span class="testimonial-rating" role="img" aria-label="5 de 5 estrelas">★★★★★</span>
+                    </div>
+                </article>
+
+                <article class="testimonial-card">
+                    <blockquote>“Serviço rápido e atendimento eficiente. Minha experiência foi positiva.”</blockquote>
+                    <div class="testimonial-meta">
+                        <span class="testimonial-author">— Rafael C.</span>
+                        <span class="testimonial-rating" role="img" aria-label="4 de 5 estrelas">★★★★</span>
                     </div>
                 </article>
             </div>
