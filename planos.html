@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confira os planos de seguidores, curtidas e visualizações da Alvo Fan.">
+    <title>Planos | Alvo Fan</title>
+    <style>
+        :root {
+            --bg: #f6f7fb;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --primary: #0f172a;
+            --accent: #ff6b00;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 110px;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 18px 6vw;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            min-width: 180px;
+        }
+
+        #logo {
+            display: block;
+            max-width: 180px;
+            height: auto;
+        }
+
+        .menu {
+            display: flex;
+            flex: 1;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 26px;
+        }
+
+        .menu a {
+            color: var(--text);
+            font-size: 0.96rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .menu a:hover,
+        .menu a:focus-visible,
+        .menu a[aria-current="page"] {
+            color: var(--accent);
+        }
+
+        main {
+            min-height: 70vh;
+            padding: 52px 6vw 32px;
+        }
+
+        .plans-content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .page-intro {
+            max-width: 760px;
+            margin: 0 auto 34px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 14px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 107, 0, 0.08);
+            color: var(--accent);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--primary);
+        }
+
+        .page-intro h1 {
+            margin: 0;
+            font-size: clamp(2.4rem, 5vw, 3.8rem);
+            line-height: 1.05;
+            letter-spacing: -0.045em;
+        }
+
+        .page-intro p {
+            margin: 16px 0 0;
+            color: var(--muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .social-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto 44px;
+        }
+
+        .social-nav a {
+            padding: 10px 17px;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 999px;
+            background: var(--white);
+            color: var(--text);
+            font-size: 0.92rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .social-nav a:hover,
+        .social-nav a:focus-visible {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .platform-section {
+            margin-top: 44px;
+            scroll-margin-top: 120px;
+        }
+
+        .platform-heading {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .platform-icon {
+            display: grid;
+            flex: 0 0 48px;
+            width: 48px;
+            height: 48px;
+            place-items: center;
+            border-radius: 16px;
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--accent);
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .platform-heading h2 {
+            margin: 0;
+            font-size: clamp(1.45rem, 2.5vw, 1.9rem);
+            letter-spacing: -0.03em;
+        }
+
+        .platform-heading p {
+            margin: 4px 0 0;
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: stretch;
+            gap: 18px;
+        }
+
+        .plan-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 310px;
+            padding: 26px;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 22px;
+            background: var(--white);
+            box-shadow: 0 14px 36px rgba(15, 23, 42, 0.045);
+        }
+
+        .plan-card.featured {
+            border: 2px solid var(--accent);
+            box-shadow: 0 18px 42px rgba(255, 107, 0, 0.12);
+        }
+
+        .best-seller {
+            position: absolute;
+            top: -13px;
+            right: 18px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: var(--primary);
+            color: var(--white);
+            font-size: 0.76rem;
+            font-weight: 800;
+            box-shadow: 0 6px 14px rgba(15, 23, 42, 0.18);
+        }
+
+        .plan-card h3 {
+            margin: 0;
+            font-size: 1.35rem;
+        }
+
+        .plan-price {
+            margin: 12px 0 20px;
+            color: var(--primary);
+            font-size: clamp(1.8rem, 3vw, 2.25rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+        }
+
+        .plan-price small {
+            margin-right: 3px;
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0;
+        }
+
+        .plan-features {
+            display: grid;
+            gap: 13px;
+            margin: 0;
+            padding: 19px 0 0;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
+            list-style: none;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--text);
+            font-size: 0.97rem;
+            line-height: 1.45;
+        }
+
+        .plan-features li::before {
+            content: "✓";
+            flex: 0 0 auto;
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .plan-note {
+            margin: auto 0 0;
+            padding-top: 16px;
+            color: var(--muted);
+            font-size: 0.87rem;
+            line-height: 1.5;
+        }
+
+        .site-footer {
+            margin-top: 76px;
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 56px 6vw 64px;
+        }
+
+        .footer-brand h2,
+        .footer-column h3 {
+            margin: 0 0 16px;
+            color: var(--white);
+        }
+
+        .footer-brand h2 {
+            font-size: 1.35rem;
+            letter-spacing: 0.04em;
+        }
+
+        .footer-brand p {
+            max-width: 320px;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.72);
+            line-height: 1.6;
+        }
+
+        .footer-column h3 {
+            font-size: 1rem;
+        }
+
+        .footer-column ul {
+            display: grid;
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.72);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-column a:hover,
+        .footer-column a:focus-visible {
+            color: var(--white);
+        }
+
+        @media (max-width: 780px) {
+            header {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .logo-wrap {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .menu {
+                width: 100%;
+                gap: 16px 22px;
+            }
+
+            .plans-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 36px;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 560px) {
+            main {
+                padding: 36px 5vw 20px;
+            }
+
+            .page-intro {
+                margin-bottom: 28px;
+            }
+
+            .social-nav {
+                margin-bottom: 34px;
+            }
+
+            .platform-section {
+                margin-top: 36px;
+            }
+
+            .plans-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .plan-card {
+                min-height: 0;
+                padding: 24px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                padding: 44px 6vw;
+            }
+
+            .footer-brand {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-wrap">
+            <a href="index.html" aria-label="Alvo Fan - página inicial">
+                <img id="logo" src="Imagens/Logo_site.png" alt="Alvo Fan">
+            </a>
+        </div>
+
+        <nav class="menu" aria-label="Menu principal">
+            <a href="index.html">Início</a>
+            <a href="sobre_nos.html">Sobre nós</a>
+            <a href="index.html#servicos">Serviços</a>
+            <a href="planos.html" aria-current="page">Planos</a>
+            <a href="index.html#como-funciona">Como funciona</a>
+            <a href="index.html#depoimentos">Avaliações</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="plans-content">
+            <section class="page-intro" aria-labelledby="plans-title">
+                <span class="eyebrow">Escolha seu próximo passo</span>
+                <h1 id="plans-title">Planos para crescer nas suas redes</h1>
+                <p>Confira as opções disponíveis e encontre o plano ideal para fortalecer sua presença digital.</p>
+            </section>
+
+            <nav class="social-nav" aria-label="Redes sociais com planos">
+                <a href="#instagram">Instagram</a>
+                <a href="#tiktok">TikTok</a>
+                <a href="#youtube">YouTube</a>
+                <a href="#kwai">Kwai</a>
+                <a href="#facebook">Facebook</a>
+            </nav>
+
+            <section class="platform-section" id="instagram" aria-labelledby="instagram-title">
+                <div class="platform-heading">
+                    <span class="platform-icon" aria-hidden="true">IG</span>
+                    <div>
+                        <h2 id="instagram-title">Instagram</h2>
+                        <p>Escolha o pacote para impulsionar seu perfil.</p>
+                    </div>
+                </div>
+                <div class="plans-grid">
+                    <article class="plan-card">
+                        <h3>Inicial</h3>
+                        <p class="plan-price"><small>R$</small> 19,90</p>
+                        <ul class="plan-features">
+                            <li>500 seguidores</li>
+                            <li>1.000 curtidas</li>
+                            <li>5.000 visualizações</li>
+                        </ul>
+                    </article>
+                    <article class="plan-card featured">
+                        <span class="best-seller">Mais vendido</span>
+                        <h3>Pro</h3>
+                        <p class="plan-price"><small>R$</small> 39,90</p>
+                        <ul class="plan-features">
+                            <li>1.000 seguidores</li>
+                            <li>2.500 curtidas</li>
+                            <li>10.000 visualizações</li>
+                        </ul>
+                    </article>
+                    <article class="plan-card">
+                        <h3>Premium</h3>
+                        <p class="plan-price"><small>R$</small> 89,90</p>
+                        <ul class="plan-features">
+                            <li>2.500 seguidores</li>
+                            <li>5.000 curtidas</li>
+                            <li>25.000 visualizações</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="platform-section" id="tiktok" aria-labelledby="tiktok-title">
+                <div class="platform-heading">
+                    <span class="platform-icon" aria-hidden="true">♪</span>
+                    <div>
+                        <h2 id="tiktok-title">TikTok</h2>
+                        <p>Mais alcance e interação para seus vídeos.</p>
+                    </div>
+                </div>
+                <div class="plans-grid">
+                    <article class="plan-card">
+                        <h3>Inicial</h3>
+                        <p class="plan-price"><small>R$</small> 24,90</p>
+                        <ul class="plan-features">
+                            <li>250 seguidores</li>
+                            <li>500 curtidas</li>
+                            <li>5.000 visualizações</li>
+                        </ul>
+                    </article>
+                    <article class="plan-card featured">
+                        <span class="best-seller">Mais vendido</span>
+                        <h3>Pro</h3>
+                        <p class="plan-price"><small>R$</small> 49,90</p>
+                        <ul class="plan-features">
+                            <li>500 seguidores</li>
+                            <li>1.500 curtidas</li>
+                            <li>15.000 visualizações</li>
+                        </ul>
+                    </article>
+                    <article class="plan-card">
+                        <h3>Premium</h3>
+                        <p class="plan-price"><small>R$</small> 99,90</p>
+                        <ul class="plan-features">
+                            <li>1.500 seguidores</li>
+                            <li>3.000 curtidas</li>
+                            <li>30.000 visualizações</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="platform-section" id="youtube" aria-labelledby="youtube-title">
+                <div class="platform-heading">
+                    <span class="platform-icon" aria-hidden="true">▶</span>
+                    <div>
+                        <h2 id="youtube-title">YouTube</h2>
+                        <p>Planos de visualizações para seus vídeos.</p>
+                    </div>
+                </div>
+                <div class="plans-grid">
+                    <article class="plan-card">
+                        <h3>Inicial</h3>
+                        <p class="plan-price"><small>R$</small> 29,90</p>
+                        <ul class="plan-features">
+                            <li>500 visualizações</li>
+                        </ul>
+                        <p class="plan-note">Serviço de inscritos vendido à parte.</p>
+                    </article>
+                    <article class="plan-card featured">
+                        <span class="best-seller">Mais vendido</span>
+                        <h3>Pro</h3>
+                        <p class="plan-price"><small>R$</small> 69,90</p>
+                        <ul class="plan-features">
+                            <li>2.000 visualizações</li>
+                        </ul>
+                        <p class="plan-note">Serviço de inscritos vendido à parte.</p>
+                    </article>
+                    <article class="plan-card">
+                        <h3>Premium</h3>
+                        <p class="plan-price"><small>R$</small> 149,90</p>
+                        <ul class="plan-features">
+                            <li>5.000 visualizações</li>
+                        </ul>
+                        <p class="plan-note">Serviço de inscritos vendido à parte.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="platform-section" id="kwai" aria-labelledby="kwai-title">
+                <div class="platform-heading">
+                    <span class="platform-icon" aria-hidden="true">K</span>
+                    <div>
+                        <h2 id="kwai-title">Kwai</h2>
+                        <p>Planos para ampliar sua audiência e engajamento.</p>
+                    </div>
+                </div>
+                <div class="plans-grid">
+                    <article class="plan-card">
+                        <h3>Inicial</h3>
+                        <p class="plan-price"><small>R$</small> 14,90</p>
+                        <ul class="plan-features">
+                            <li>500 seguidores</li>
+                            <li>1.000 curtidas</li>
+                            <li>5.000 visualizações</li>
+                        </ul>
+                    </article>
+                    <article class="plan-card featured">
+                        <span class="best-seller">Mais vendido</span>
+                        <h3>Pro</h3>
+                        <p class="plan-price"><small>R$</small> 29,90</p>
+                        <ul class="plan-features">
+                            <li>1.500 seguidores</li>
+                            <li>3.000 curtidas</li>
+                            <li>15.000 visualizações</li>
+                        </ul>
+                    </article>
+                    <article class="plan-card">
+                        <h3>Premium</h3>
+                        <p class="plan-price"><small>R$</small> 59,90</p>
+                        <ul class="plan-features">
+                            <li>3.000 seguidores</li>
+                            <li>6.000 curtidas</li>
+                            <li>30.000 visualizações</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="platform-section" id="facebook" aria-labelledby="facebook-title">
+                <div class="platform-heading">
+                    <span class="platform-icon" aria-hidden="true">f</span>
+                    <div>
+                        <h2 id="facebook-title">Facebook</h2>
+                        <p>Mais presença para sua página.</p>
+                    </div>
+                </div>
+                <div class="plans-grid">
+                    <article class="plan-card">
+                        <h3>Inicial</h3>
+                        <p class="plan-price"><small>R$</small> 19,90</p>
+                        <ul class="plan-features">
+                            <li>500 seguidores da página</li>
+                            <li>500 curtidas</li>
+                            <li>5.000 visualizações</li>
+                        </ul>
+                    </article>
+                    <article class="plan-card featured">
+                        <span class="best-seller">Mais vendido</span>
+                        <h3>Pro</h3>
+                        <p class="plan-price"><small>R$</small> 39,90</p>
+                        <ul class="plan-features">
+                            <li>1.500 seguidores da página</li>
+                            <li>1.500 curtidas</li>
+                            <li>15.000 visualizações</li>
+                        </ul>
+                    </article>
+                    <article class="plan-card">
+                        <h3>Premium</h3>
+                        <p class="plan-price"><small>R$</small> 79,90</p>
+                        <ul class="plan-features">
+                            <li>3.000 seguidores da página</li>
+                            <li>3.000 curtidas</li>
+                            <li>30.000 visualizações</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>ALVO FAN</h2>
+                <p>Soluções para crescimento e presença digital.</p>
+            </div>
+
+            <nav class="footer-column" aria-label="Empresa">
+                <h3>Empresa</h3>
+                <ul>
+                    <li><a href="sobre_nos.html">Sobre nós</a></li>
+                    <li><a href="planos.html" aria-current="page">Planos</a></li>
+                    <li><a href="index.html#como-funciona">Como funciona</a></li>
+                </ul>
+            </nav>
+
+            <nav class="footer-column" aria-label="Redes sociais">
+                <h3>Planos</h3>
+                <ul>
+                    <li><a href="#instagram">Instagram</a></li>
+                    <li><a href="#tiktok">TikTok</a></li>
+                    <li><a href="#youtube">YouTube</a></li>
+                    <li><a href="#kwai">Kwai</a></li>
+                    <li><a href="#facebook">Facebook</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
