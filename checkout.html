@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Finalize seu pedido Alvo Fan com pagamento Pix.">
+    <title>Checkout | Alvo Fan</title>
+    <style>
+        :root {
+            --bg: #f6f7fb;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --primary: #0f172a;
+            --accent: #ff6b00;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 18px 6vw;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        #logo {
+            display: block;
+            width: 180px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .back-link {
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .back-link:hover,
+        .back-link:focus-visible {
+            color: var(--accent);
+        }
+
+        main {
+            width: min(100% - 32px, 960px);
+            margin: 0 auto;
+            padding: 52px 0 72px;
+        }
+
+        .page-intro {
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 107, 0, 0.08);
+            color: var(--accent);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2 {
+            color: var(--primary);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2rem, 5vw, 3rem);
+            letter-spacing: -0.04em;
+        }
+
+        .page-intro p {
+            margin: 12px 0 0;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+            gap: 22px;
+            align-items: start;
+        }
+
+        .panel {
+            padding: 30px;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 22px;
+            background: var(--white);
+            box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
+        }
+
+        .panel h2 {
+            margin: 0 0 22px;
+            font-size: 1.25rem;
+        }
+
+        .order-platform {
+            margin: 0 0 6px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .order-plan {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .order-features {
+            display: grid;
+            gap: 12px;
+            margin: 22px 0 0;
+            padding: 20px 0 0;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
+            list-style: none;
+        }
+
+        .order-features li::before {
+            margin-right: 9px;
+            color: var(--accent);
+            content: "✓";
+            font-weight: 800;
+        }
+
+        .total {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        .total span {
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .total strong {
+            color: var(--accent);
+            font-size: 1.7rem;
+        }
+
+        .payment-panel {
+            text-align: center;
+        }
+
+        .payment-panel h2 {
+            margin-bottom: 8px;
+        }
+
+        .payment-help {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        .qr-frame {
+            display: grid;
+            width: min(100%, 264px);
+            aspect-ratio: 1;
+            margin: 22px auto 14px;
+            place-items: center;
+            border: 1px solid rgba(15, 23, 42, 0.1);
+            border-radius: 16px;
+            background: var(--white);
+        }
+
+        .qr-frame img {
+            display: block;
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+        }
+
+        .qr-total {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .pix-key-section {
+            margin-top: 30px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(15, 23, 42, 0.08);
+            text-align: left;
+        }
+
+        .pix-key-section h3 {
+            margin: 0 0 8px;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .pix-key-section p {
+            margin: 0 0 14px;
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .copy-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .pix-key {
+            min-width: 0;
+            flex: 1;
+            padding: 12px;
+            border: 1px solid rgba(15, 23, 42, 0.14);
+            border-radius: 10px;
+            background: #f9fafb;
+            color: var(--primary);
+            font: inherit;
+            font-weight: 700;
+        }
+
+        .copy-button {
+            padding: 12px 16px;
+            border: 0;
+            border-radius: 10px;
+            background: var(--primary);
+            color: var(--white);
+            cursor: pointer;
+            font: inherit;
+            font-weight: 700;
+        }
+
+        .copy-button:hover,
+        .copy-button:focus-visible {
+            background: #263449;
+        }
+
+        .copy-status {
+            min-height: 1.4em;
+            margin: 10px 0 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .invalid-plan {
+            padding: 28px;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 18px;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .invalid-plan h2 {
+            margin-top: 0;
+        }
+
+        .plans-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 13px 20px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: var(--white);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        footer {
+            padding: 24px;
+            background: var(--primary);
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 16px 5vw;
+            }
+
+            #logo {
+                width: 150px;
+            }
+
+            main {
+                padding-top: 36px;
+            }
+
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .panel {
+                padding: 22px;
+            }
+
+            .copy-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" aria-label="Alvo Fan - página inicial">
+            <img id="logo" src="Imagens/Logo_site.png" alt="Alvo Fan">
+        </a>
+        <a class="back-link" href="planos.html">Voltar aos planos</a>
+    </header>
+
+    <main>
+        <section class="page-intro" aria-labelledby="checkout-title">
+            <span class="eyebrow">Pagamento via Pix</span>
+            <h1 id="checkout-title">Finalize seu pedido</h1>
+            <p>Confira o plano escolhido e escaneie o QR Code para pagar.</p>
+        </section>
+
+        <section id="invalid-plan" class="invalid-plan" role="alert" hidden>
+            <h2>Não foi possível identificar o plano</h2>
+            <p>Volte à página de planos e selecione uma opção para continuar com o pagamento.</p>
+            <a class="plans-link" href="planos.html">Ver planos</a>
+        </section>
+
+        <div id="checkout-content" class="checkout-grid" hidden>
+            <section class="panel" aria-labelledby="order-title">
+                <h2 id="order-title">Resumo do pedido</h2>
+                <p id="order-platform" class="order-platform"></p>
+                <h3 id="order-plan" class="order-plan"></h3>
+                <ul id="order-features" class="order-features"></ul>
+                <div class="total">
+                    <span>Total a pagar</span>
+                    <strong id="order-total"></strong>
+                </div>
+            </section>
+
+            <section class="panel payment-panel" aria-labelledby="payment-title">
+                <h2 id="payment-title">Pague com Pix</h2>
+                <p class="payment-help">Abra o aplicativo do seu banco e escaneie o QR Code abaixo.</p>
+                <div class="qr-frame">
+                    <img id="payment-qr" src="" alt="">
+                </div>
+                <p id="qr-total" class="qr-total"></p>
+
+                <div class="pix-key-section">
+                    <h3>Prefere copiar a chave Pix?</h3>
+                    <p>Copie a chave abaixo e cole no aplicativo do seu banco.</p>
+                    <div class="copy-row">
+                        <input id="pix-key" class="pix-key" type="text" value="63.368.214/0001-35" readonly aria-label="Chave Pix">
+                        <button id="copy-button" class="copy-button" type="button">Copiar chave</button>
+                    </div>
+                    <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>ALVO FAN · Pix para Alvo Fans · Brasília</p>
+    </footer>
+
+    <script>
+        const catalog = {
+            instagram: {
+                name: "Instagram",
+                plans: {
+                    inicial: { name: "Inicial", price: "19,90", qr: "19", features: ["500 seguidores", "1.000 curtidas", "5.000 visualizações"] },
+                    pro: { name: "Pro", price: "39,90", qr: "39", features: ["1.000 seguidores", "2.500 curtidas", "10.000 visualizações"] },
+                    premium: { name: "Premium", price: "89,90", qr: "89", features: ["2.500 seguidores", "5.000 curtidas", "25.000 visualizações"] }
+                }
+            },
+            tiktok: {
+                name: "TikTok",
+                plans: {
+                    inicial: { name: "Inicial", price: "24,90", qr: "24", features: ["250 seguidores", "500 curtidas", "5.000 visualizações"] },
+                    pro: { name: "Pro", price: "49,90", qr: "49", features: ["500 seguidores", "1.500 curtidas", "15.000 visualizações"] },
+                    premium: { name: "Premium", price: "99,90", qr: "99", features: ["1.500 seguidores", "3.000 curtidas", "30.000 visualizações"] }
+                }
+            },
+            youtube: {
+                name: "YouTube",
+                plans: {
+                    inicial: { name: "Inicial", price: "29,90", qr: "29", features: ["500 visualizações", "Serviço de inscritos vendido à parte"] },
+                    pro: { name: "Pro", price: "69,90", qr: "69", features: ["2.000 visualizações", "Serviço de inscritos vendido à parte"] },
+                    premium: { name: "Premium", price: "149,90", qr: "149", features: ["5.000 visualizações", "Serviço de inscritos vendido à parte"] }
+                }
+            },
+            kwai: {
+                name: "Kwai",
+                plans: {
+                    inicial: { name: "Inicial", price: "14,90", qr: "14", features: ["500 seguidores", "1.000 curtidas", "5.000 visualizações"] },
+                    pro: { name: "Pro", price: "29,90", qr: "29", features: ["1.500 seguidores", "3.000 curtidas", "15.000 visualizações"] },
+                    premium: { name: "Premium", price: "59,90", qr: "59", features: ["3.000 seguidores", "6.000 curtidas", "30.000 visualizações"] }
+                }
+            },
+            facebook: {
+                name: "Facebook",
+                plans: {
+                    inicial: { name: "Inicial", price: "19,90", qr: "19", features: ["500 seguidores da página", "500 curtidas", "5.000 visualizações"] },
+                    pro: { name: "Pro", price: "39,90", qr: "39", features: ["1.500 seguidores da página", "1.500 curtidas", "15.000 visualizações"] },
+                    premium: { name: "Premium", price: "79,90", qr: "79", features: ["3.000 seguidores da página", "3.000 curtidas", "30.000 visualizações"] }
+                }
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const platformId = params.get("rede");
+        const planId = params.get("plano");
+        const selectedPlatform = Object.prototype.hasOwnProperty.call(catalog, platformId)
+            ? catalog[platformId]
+            : null;
+        const selectedPlan = selectedPlatform && Object.prototype.hasOwnProperty.call(selectedPlatform.plans, planId)
+            ? selectedPlatform.plans[planId]
+            : null;
+
+        if (!selectedPlatform || !selectedPlan) {
+            document.getElementById("invalid-plan").hidden = false;
+        } else {
+            document.title = `Checkout ${selectedPlatform.name} ${selectedPlan.name} | Alvo Fan`;
+            document.getElementById("checkout-content").hidden = false;
+            document.getElementById("order-platform").textContent = selectedPlatform.name;
+            document.getElementById("order-plan").textContent = `Plano ${selectedPlan.name}`;
+            document.getElementById("order-total").textContent = `R$ ${selectedPlan.price}`;
+            document.getElementById("qr-total").textContent = `Valor: R$ ${selectedPlan.price}`;
+            document.getElementById("payment-qr").src = `Imagens/Qrcode/${selectedPlan.qr}.jpeg`;
+            document.getElementById("payment-qr").alt = `QR Code Pix no valor de R$ ${selectedPlan.price}`;
+
+            const featureList = document.getElementById("order-features");
+            selectedPlan.features.forEach(feature => {
+                const item = document.createElement("li");
+                item.textContent = feature;
+                featureList.appendChild(item);
+            });
+        }
+
+        document.getElementById("copy-button").addEventListener("click", async () => {
+            const keyInput = document.getElementById("pix-key");
+            const status = document.getElementById("copy-status");
+
+            try {
+                await navigator.clipboard.writeText(keyInput.value);
+                status.textContent = "Chave Pix copiada.";
+            } catch (error) {
+                keyInput.focus();
+                keyInput.select();
+                status.textContent = "Não foi possível copiar automaticamente. Selecione e copie a chave exibida.";
+            }
+        });
+    </script>
+</body>
+</html>
