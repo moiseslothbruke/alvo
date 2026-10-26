@@ -145,6 +145,39 @@
             font-weight: 800;
         }
 
+        .profile-link-field {
+            display: grid;
+            gap: 8px;
+            margin-top: 22px;
+        }
+
+        .profile-link-field label {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .profile-link-field input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(15, 23, 42, 0.14);
+            border-radius: 10px;
+            background: #f9fafb;
+            color: var(--primary);
+            font: inherit;
+        }
+
+        .profile-link-field input:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        .profile-link-help {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+
         .total {
             display: flex;
             align-items: baseline;
@@ -359,6 +392,20 @@
                 <p id="order-platform" class="order-platform"></p>
                 <h3 id="order-plan" class="order-plan"></h3>
                 <ul id="order-features" class="order-features"></ul>
+                <div class="profile-link-field">
+                    <label for="social-profile-link">Link do perfil <span aria-hidden="true">*</span></label>
+                    <input
+                        id="social-profile-link"
+                        name="social-profile-link"
+                        type="url"
+                        inputmode="url"
+                        autocomplete="url"
+                        placeholder="https://"
+                        aria-describedby="profile-link-help"
+                        required
+                    >
+                    <p id="profile-link-help" class="profile-link-help">Informe o link completo do perfil da rede social escolhida.</p>
+                </div>
                 <div class="total">
                     <span>Total a pagar</span>
                     <strong id="order-total"></strong>
