@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="description" content="Guias e ideias práticas da Alvo Fan para fortalecer sua presença no Instagram e nas redes sociais.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://home.alvofans.workers.dev/conteudos.html">
+    <title>Conteúdos para suas redes sociais | Alvo Fan</title>
+    <style>
+        :root {
+            --bg: #f6f7fb;
+            --text: #1f2937;
+            --muted: #6b7280;
+            --primary: #0f172a;
+            --accent: #ff6b00;
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 18px 6vw;
+            border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-wrap { display: flex; align-items: center; min-width: 180px; }
+        #logo { display: block; max-width: 180px; height: auto; }
+        .menu {
+            display: flex;
+            flex: 1;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 26px;
+        }
+        .menu a {
+            color: var(--text);
+            font-size: 0.96rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .menu a:hover,
+        .menu a:focus-visible,
+        .menu a[aria-current="page"] { color: var(--accent); }
+
+        main { min-height: 70vh; padding: 56px 6vw 80px; }
+        .content-wrap { max-width: 1180px; margin: 0 auto; }
+        .intro { max-width: 760px; margin: 0 auto 42px; text-align: center; }
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 16px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255, 107, 0, 0.08);
+            color: var(--accent);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        h1, h2, h3 { color: var(--primary); }
+        .intro h1 {
+            margin: 0;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.05;
+            letter-spacing: -0.045em;
+        }
+        .intro p {
+            margin: 18px 0 0;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.7;
+        }
+        .featured {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 36px;
+            align-items: center;
+            overflow: hidden;
+            padding: clamp(28px, 5vw, 56px);
+            border: 1px solid rgba(15, 23, 42, 0.06);
+            border-radius: 28px;
+            background: var(--white);
+            box-shadow: 0 24px 64px rgba(15, 23, 42, 0.07);
+        }
+        .featured-art {
+            display: flex;
+            min-height: 300px;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 22px;
+            background:
+                radial-gradient(circle at 75% 22%, rgba(255, 255, 255, 0.85), transparent 22%),
+                linear-gradient(135deg, #ff9a44, #ff6b00 52%, #d92f77);
+        }
+        .featured-art img { width: 112px; height: 112px; filter: brightness(0) invert(1); }
+        .featured-copy .eyebrow { margin-bottom: 18px; }
+        .featured-copy h2 {
+            margin: 0;
+            font-size: clamp(2rem, 3.7vw, 3.1rem);
+            line-height: 1.08;
+            letter-spacing: -0.04em;
+        }
+        .featured-copy p {
+            margin: 18px 0 0;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .article-meta { margin-top: 18px; color: var(--muted); font-size: 0.9rem; }
+        .button {
+            display: inline-block;
+            margin-top: 26px;
+            padding: 14px 21px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #ff8d2a, var(--accent));
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.22);
+            color: var(--white);
+            font-size: 0.94rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .button:hover, .button:focus-visible { background: #e85f00; }
+        .topics { padding-top: 74px; }
+        .topics h2 {
+            margin: 0 0 12px;
+            text-align: center;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            letter-spacing: -0.03em;
+        }
+        .topics-intro {
+            max-width: 640px;
+            margin: 0 auto 30px;
+            color: var(--muted);
+            line-height: 1.65;
+            text-align: center;
+        }
+        .topic-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+        .topic-card {
+            min-height: 196px;
+            padding: 24px 20px;
+            border: 1px solid rgba(15, 23, 42, 0.08);
+            border-radius: 20px;
+            background: var(--white);
+            box-shadow: 0 14px 36px rgba(15, 23, 42, 0.05);
+            text-decoration: none;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .topic-card:hover, .topic-card:focus-visible {
+            transform: translateY(-3px);
+            border-color: rgba(255, 107, 0, 0.45);
+        }
+        .topic-icon {
+            display: flex;
+            width: 46px;
+            height: 46px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            border-radius: 14px;
+            background: rgba(255, 107, 0, 0.1);
+            font-size: 1.35rem;
+        }
+        .topic-card h3 { margin: 0 0 8px; font-size: 1.06rem; }
+        .topic-card p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
+
+        .site-footer { margin-top: 76px; background: var(--primary); color: var(--white); }
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 56px 6vw 64px;
+        }
+        .footer-brand h2, .footer-column h3 { margin: 0 0 16px; color: var(--white); }
+        .footer-brand h2 { font-size: 1.35rem; letter-spacing: 0.04em; }
+        .footer-brand p { max-width: 320px; margin: 0; color: rgba(255, 255, 255, 0.72); line-height: 1.6; }
+        .footer-column h3 { font-size: 1rem; }
+        .footer-column ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+        .footer-column a { color: rgba(255, 255, 255, 0.72); text-decoration: none; }
+        .footer-column a:hover, .footer-column a:focus-visible { color: var(--white); }
+
+        @media (max-width: 850px) {
+            header { flex-wrap: wrap; justify-content: center; }
+            .logo-wrap { width: 100%; justify-content: center; }
+            .menu { width: 100%; gap: 16px 22px; }
+            .featured { grid-template-columns: 1fr; }
+            .featured-art { min-height: 240px; }
+            .topic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .footer-content { grid-template-columns: 1fr 1fr; gap: 36px; }
+            .footer-brand { grid-column: 1 / -1; }
+        }
+        @media (max-width: 560px) {
+            main { padding: 40px 5vw 56px; }
+            .topic-grid, .footer-content { grid-template-columns: 1fr; }
+            .footer-brand { grid-column: auto; }
+            .footer-content { gap: 30px; padding: 44px 6vw; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a class="logo-wrap" href="index.html" aria-label="Alvo Fan - página inicial">
+            <img id="logo" src="Imagens/Logo_site.png" alt="Alvo Fan">
+        </a>
+        <nav class="menu" aria-label="Menu principal">
+            <a href="index.html">Início</a>
+            <a href="sobre_nos.html">Sobre nós</a>
+            <a href="index.html#servicos">Serviços</a>
+            <a href="planos.html">Planos</a>
+            <a href="conteudos.html" aria-current="page">Conteúdos</a>
+            <a href="index.html#como-funciona">Como funciona</a>
+            <a href="suporte.html">Suporte</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content-wrap">
+            <section class="intro" aria-labelledby="page-title">
+                <span class="eyebrow">Blog Alvo Fan</span>
+                <h1 id="page-title">Ideias para crescer nas redes sociais</h1>
+                <p>Guias práticos para criar conteúdo, fortalecer sua presença digital e tomar decisões melhores para o seu perfil.</p>
+            </section>
+
+            <section aria-labelledby="featured-title">
+                <article class="featured">
+                    <div class="featured-art" aria-hidden="true">
+                        <img src="Imagens/instagram.svg" alt="">
+                    </div>
+                    <div class="featured-copy">
+                        <span class="eyebrow">Artigo em destaque · Instagram</span>
+                        <h2 id="featured-title">Como crescer no Instagram em 2026</h2>
+                        <p>Descubra sete estratégias para deixar seu perfil mais claro, criar Reels que prendem a atenção e transformar bons conteúdos em uma comunidade.</p>
+                        <p class="article-meta">Leitura de 8 minutos · Estratégia para criadores</p>
+                        <a class="button" href="artigo-instagram-2026.html">Ler artigo completo →</a>
+                    </div>
+                </article>
+            </section>
+
+            <section class="topics" aria-labelledby="topics-title">
+                <h2 id="topics-title">Explore os temas do guia</h2>
+                <p class="topics-intro">Comece pelo assunto que mais importa para o seu perfil. Cada tema leva direto à parte correspondente do artigo.</p>
+                <div class="topic-grid">
+                    <a class="topic-card" href="artigo-instagram-2026.html#perfil">
+                        <span class="topic-icon" aria-hidden="true">👤</span>
+                        <h3>Perfil que comunica</h3>
+                        <p>Bio, publicações fixadas e primeiros segundos de atenção.</p>
+                    </a>
+                    <a class="topic-card" href="artigo-instagram-2026.html#reels">
+                        <span class="topic-icon" aria-hidden="true">▶</span>
+                        <h3>Reels e conteúdo</h3>
+                        <p>Ganchos, formatos e ideias que geram valor para a audiência.</p>
+                    </a>
+                    <a class="topic-card" href="artigo-instagram-2026.html#comunidade">
+                        <span class="topic-icon" aria-hidden="true">💬</span>
+                        <h3>Comunidade</h3>
+                        <p>Relacionamento genuíno para entender e envolver seu público.</p>
+                    </a>
+                    <a class="topic-card" href="artigo-instagram-2026.html#metricas">
+                        <span class="topic-icon" aria-hidden="true">📊</span>
+                        <h3>Métricas e evolução</h3>
+                        <p>Saiba quais sinais observar além da contagem de seguidores.</p>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>ALVO FAN</h2>
+                <p>Soluções para crescimento e presença digital.</p>
+            </div>
+            <nav class="footer-column" aria-label="Empresa">
+                <h3>Empresa</h3>
+                <ul>
+                    <li><a href="sobre_nos.html">Sobre nós</a></li>
+                    <li><a href="planos.html">Planos</a></li>
+                    <li><a href="conteudos.html">Conteúdos</a></li>
+                    <li><a href="suporte.html">Suporte</a></li>
+                </ul>
+            </nav>
+            <nav class="footer-column" aria-label="Serviços">
+                <h3>Serviços</h3>
+                <ul>
+                    <li><a href="index.html#servicos">Instagram</a></li>
+                    <li><a href="index.html#servicos">TikTok</a></li>
+                    <li><a href="index.html#servicos">YouTube</a></li>
+                    <li><a href="index.html#servicos">Facebook</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
